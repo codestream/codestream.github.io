@@ -57,14 +57,20 @@ window.onload = function(){
         }
     };
 
-    function Gallery(domNode){
-        if(domNode === undefined){
-            throw new Error("DOM node undefined");
-        }
+    function Gallery(nodeName){
+
     }
 
     Gallery.prototype = {
 
+        slideGallery : function(){
 
+        }
     };
+
+    var g = new Gallery(".previews");
+
+    setInterval(function () {
+        g.slideGallery();
+    }, 5000);
 };
