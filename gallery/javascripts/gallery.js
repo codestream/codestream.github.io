@@ -57,20 +57,47 @@ window.onload = function(){
         }
     };
 
-    function Gallery(nodeName){
-
+    function Gallery(){
+        this.currentPreview = "current";
+        this.selectedElement = document.querySelectorAll("li > .preview");
+        this.fullImage = document.getElementById("fullImage");
     }
 
     Gallery.prototype = {
 
         slideGallery : function(){
+            for (var i = 0; i < this.selectedElement.length; i += 1) {
+                if (hasClass(this.selectedElement[i], this.currentPreview)) {
+                    removeClass(this.selectedElement[i], this.currentPreview);
+                    addClass(this.selectedElement[i += 1], this.currentPreview);
+                    this.fullImage.src = bigImages[i];
+                    if (i == this.selectedElement.length - 1) {
+                        clearInterval(interval);
+                    }
+                }
+            }
+        },
 
+        galleryItemClick : function(){
+            var gallery = new Gallery();
+            var listener = function(event){
+                for(var i = 0; i < gallery.selectedElement.length; i++){
+                    var target = getEventTarget(event);
+                    if(target === gallery.selectedElement[i]){
+                        clearInterval(interval);
+                    }
+                }
+            };
+
+            document.addEventListener("click", listener, false);
         }
     };
 
-    var g = new Gallery(".previews");
+    var g = new Gallery();
 
-    setInterval(function () {
+    var interval = setInterval(function () {
         g.slideGallery();
     }, 5000);
+
+    g.galleryItemClick();
 };
