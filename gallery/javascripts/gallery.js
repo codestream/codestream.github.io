@@ -108,10 +108,11 @@ window.onload = function(){
                 }
             };
 
-            if(document.addEventListener){
+            if(!document.addEventListener){
+                document.attachEvent("click", listener);
+            } else {
                 document.addEventListener("click", listener, false);
             }
-            /*document.addEventListener("click", listener, false);*/
         },
 
         scrollFromKeyboard : function(){
@@ -158,10 +159,11 @@ window.onload = function(){
                 }
             };
 
-            if(document.addEventListener){
+            if(!document.addEventListener){
+                document.attachEvent('keydown', keyDownListener);
+            } else {
                 document.addEventListener('keydown', keyDownListener, false);
             }
-            /*document.addEventListener('keydown', keyDownListener, false);*/
         }
     };
 
