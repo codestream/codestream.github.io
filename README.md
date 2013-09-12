@@ -1,0 +1,1 @@
+This is repo with pretty WebUI examples. Currently, I'm not using any libraries
