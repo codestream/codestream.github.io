@@ -1,0 +1,79 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
+dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time,
+mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.menu-context {
+    display: none;
+    background-color: ThreeDLightShadow;
+    width: 100px;
+    list-style: none;
+    padding: 3px;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    margin: 0;
+    border: 1px solid #00bfff;
+}
+
+.child-menu {
+    display: none;
+    background-color: ThreeDLightShadow;
+    width: 100px;
+    list-style: none;
+    padding: 3px;
+    top: 20px;
+    left: 30px;
+    margin-left: 50px;
+    outline: 1px solid #00bfff;
+}
+
+.pointer {
+    background: url(http://i.piccy.info/i7/c675f07dcaa26b836532c514df0d412d/4-76-355/31686339/mark3.png) ThreeDLightShadow right top no-repeat;
+}
+
+.enabled {
+    display: block;
+}
+
+.shift {
+    margin-left: 73%;
+}
+
+li:hover {
+    background-color: #00bfff;
+}
