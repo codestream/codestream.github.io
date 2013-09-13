@@ -111,7 +111,7 @@ window.onload = function(){
             if(document.addEventListener){
                 document.addEventListener('click', listener, false);
             } else if(document.attachEvent){
-                document.attachEvent('click', listener);
+                document.attachEvent('onclick', listener);
             }
         },
 
@@ -162,7 +162,7 @@ window.onload = function(){
             if(document.addEventListener){
                 document.addEventListener('keydown', keyDownListener, false);
             } else if(document.attachEvent){
-                document.attachEvent('keydown', keyDownListener);
+                document.attachEvent('onkeydown', keyDownListener);
             }
         }
     };
