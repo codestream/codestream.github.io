@@ -108,10 +108,10 @@ window.onload = function(){
                 }
             };
 
-            if(!document.addEventListener){
-                document.attachEvent("click", listener);
-            } else {
-                document.addEventListener("click", listener, false);
+            if(document.addEventListener){
+                document.addEventListener('click', listener, false);
+            } else if(document.attachEvent){
+                document.attachEvent('click', listener);
             }
         },
 
@@ -159,10 +159,10 @@ window.onload = function(){
                 }
             };
 
-            if(!document.addEventListener){
-                document.attachEvent('keydown', keyDownListener);
-            } else {
+            if(document.addEventListener){
                 document.addEventListener('keydown', keyDownListener, false);
+            } else if(document.attachEvent){
+                document.attachEvent('keydown', keyDownListener);
             }
         }
     };
