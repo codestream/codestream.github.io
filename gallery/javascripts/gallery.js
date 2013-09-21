@@ -177,3 +177,4 @@ window.onload = function(){
 
     g.scrollFromKeyboard();
 };
+
