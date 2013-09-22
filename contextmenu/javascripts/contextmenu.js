@@ -1,135 +1,180 @@
-window.onload = function(){
+window.onload = function () {
     'use strict';
 
-    var preventDefault = function(event){
-        if(event.preventDefault){
-            event.preventDefault();
-        } else {
-            event.returnValue = false;
+    var menuData = [
+        {
+            name: "Open file"
+        },
+        {
+            name: "Set encoding",
+            submenu: [
+                {
+                    name: "UTF-8"
+                },
+                {
+                    name: "CP-1251"
+                }
+            ]
+        },
+        {
+            name: "Set file type",
+            submenu: [
+                {
+                    name: "Programming languages",
+                    submenu: [
+                        {
+                            name: "C"
+                        },
+                        {
+                            name: "C++"
+                        },
+                        {
+                            name: "C#"
+                        },
+                        {
+                            name: "Java"
+                        },
+                        {
+                            name: "Haskell"
+                        },
+                        {
+                            name: "Objective-C"
+                        },
+                        {
+                            name: "Scala"
+                        }
+                    ]
+                },
+                {
+                    name: "Scripting languages",
+                    submenu:[
+                        {
+                            name: "JavaScript"
+                        },
+                        {
+                            name: "Lua"
+                        },
+                        {
+                            name: "Ruby"
+                        },
+                        {
+                            name: "Perl"
+                        },
+                        {
+                            name: "Python"
+                        },
+                        {
+                            name: "PHP"
+                        }
+                    ]
+                },
+                {
+                    name: "Markup languages",
+                    submenu:[
+                        {
+                            name: "CSS"
+                        },
+                        {
+                            name: "XML"
+                        },
+                        {
+                            name: "Markdown"
+                        },
+                        {
+                            name: "HTML"
+                        }
+                    ]
+                }
+            ]
         }
-    };
+    ];
 
-    var removeClass = function(node, className) {
+    function isArray(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    }
+
+    if (!Array.prototype.forEach) {
+        Array.prototype.forEach = function (fn, scope) {
+            for (var i = 0, len = this.length; i < len; ++i) {
+                fn.call(scope, this[i], i, this);
+            }
+        }
+    }
+
+    function hasClass(node, className) {
+        return node.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)', "g"));
+    }
+
+    function addClass(node, className) {
+        if (hasClass(node, className) == null) {
+            var classNode = node.className;
+            className = ' ' + className;
+            node.className = classNode + className;
+        }
+    }
+
+    function removeClass(node, className) {
         if (node !== undefined && className !== undefined) {
             var cn = node.className;
             var rxp = new RegExp('(\\s|^)' + className + '(\\s|$)', "g");
             cn = cn.replace(rxp, " ");
             node.className = cn;
         }
-    };
+    }
 
-    var hasClass = function(node, className) {
-        return node.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)', "g"));
-    };
 
-    var addClass = function(node, className) {
-        if(hasClass(node,className) == null){
-            var classNode = node.className;
-            className = ' ' + className;
-            node.className = classNode + className;
-        }
-    };
-
-    var getEventTarget = function(event){
-        event = event || window.event;
-        return event.target || event.srcElement;
-    };
-
-    function ContextMenu(){
+    function ContextMenu() {
     }
 
     ContextMenu.prototype = {
-        buildMenu : function(elementsCount){
-            var root = document.createElement("ul");
-            root.setAttribute("id", "menu");
-            root.setAttribute("class", "menu-context");
-            for(var i = 0; i < elementsCount; i++){
-                var listElement = document.createElement("li");
-                listElement.innerHTML = "Item " + i;
-                root.appendChild(listElement);
-            }
 
-            var fragment = document.createDocumentFragment();
-            fragment.appendChild(root);
-            document.body.appendChild(fragment);
-        },
+        buildContextMenu: function (data) {
+            if (isArray(data)) {
+                var listElement, childRootElement, childListElement;
+                var fragment = document.createDocumentFragment();
+                var rootElement = document.createElement("ul");
+                var subItems = document.createElement("ul");
+                rootElement.setAttribute("class", "menu-context");
+                fragment.appendChild(rootElement);
+                (function () {
+                    data.forEach(function (element) {
+                        childRootElement = document.createElement("ul");
+                        if (element.name) {
+                            listElement = document.createElement("li");
+                            listElement.innerHTML = element.name;
+                            rootElement.appendChild(listElement);
+                        }
 
-        addPointer : function(){
-            var listElements = document.getElementsByTagName("li");
-            for(var i = 0; i < listElements.length; i++){
-                if(listElements[i] === listElements[listElements.length-1]){
-                    addClass(listElements[i], "pointer")
-                }
-            }
-        },
+                        if(element.submenu){
+                            element.submenu.forEach(function(el){
+                                listElement.className = "pointer";
+                                childListElement = document.createElement("li");
+                                if(hasClass(listElement, "pointer")){
+                                    childListElement.innerHTML = el.name;
+                                }
 
-        addSubMenu: function(){
-            var listElements = document.getElementsByTagName("li");
-            var ulElement = document.createElement("ul");
-            ulElement.setAttribute("class", "menu-context shift");
-            ulElement.setAttribute("id", "child-menu");
-            ulElement.style.display = "block";
-            var fragment = document.createDocumentFragment();
-            for(var i = 0; i < listElements.length; i++){
-                var liElement = document.createElement("li");
-                liElement.innerHTML = "Sub item " + i;
-                fragment.appendChild(liElement);
-                if(hasClass(listElements[i], "pointer")){
-                    ulElement.appendChild(fragment);
-                    listElements[i].appendChild(ulElement);
-                }
-            }
+                                childRootElement.appendChild(childListElement);
+                                listElement.appendChild(childRootElement);
 
-            var list = document.getElementsByTagName("li");
-            for(var j = 0; j < list.length; j++){
-                if(listElements[j] === listElements[listElements.length-1]){
-                    addClass(listElements[j], "pointer")
-                }
-            }
-        },
+                                if(el.submenu){
+                                    el.submenu.forEach(function(elem){
+                                        childListElement.className = "pointer";
+                                        if(hasClass(childListElement, "pointer")){
 
-        handleRightClick : function(){
-            var menu = document.getElementById("menu");
-            menu.style.display = "none";
-            var listener = function(event){
-                preventDefault(event);
-                menu.style.display = (menu.style.display === "none") ? "block" : "none";
-                menu.style.top = event.clientY + "px";
-                menu.style.left = event.clientX + "px";
-            };
-
-            if(document.addEventListener){
-                document.addEventListener('contextmenu', listener, false);
-            } else if(document.attachEvent){
-                document.attachEvent('oncontextmenu', listener);
-            }
-        },
-
-        onPointerHover : function(){
-            var contextMenu = new ContextMenu();
-            var listener = function(event){
-                var target = getEventTarget(event);
-                var elements = document.getElementsByClassName("pointer");
-                for(var i = 0; i < elements.length; i++){
-                    if(elements[i] === target && elements[i].childNodes.length === 1){
-                       contextMenu.addSubMenu();
-                    }
-                }
-            };
-
-            if(document.addEventListener){
-                //mouseenter есть в jquery, в plain js из коробки нету
-                //срабатывает только если у element[i] длина childNodes равна 1
-               document.addEventListener('mouseover', listener, false);
-            } else if(document.attachEvent){
-                document.attachEvent('onmouseover', listener);
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }());
+                document.body.appendChild(fragment);
+            } else {
+                throw Error("Data must be an array");
             }
         }
     };
 
-    var ctx = new ContextMenu();
-    ctx.buildMenu(6);
-    ctx.addPointer();
-    ctx.handleRightClick();
-    ctx.onPointerHover();
+    var contextMenu = new ContextMenu();
+    contextMenu.buildContextMenu(menuData);
 };
