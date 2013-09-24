@@ -4,6 +4,7 @@
     var currentPage = 1;
     var totalPages;
     var url = 'http://rozetka.com.ua/usb-flash-memory/c80045/';
+    var jsonArray = [];
 
     var getAjaxRequest = function(){
         var request;
@@ -74,7 +75,7 @@
             },
 
             buildJSON: function(){
-                var jsonArray = [];
+
                 for(var i = 0; i < this.parseUAPrices().length; i++){
                     var price = this.parseUAPrices()[i];
                     var usdPrice = this.parseUSDPrices()[i];
@@ -133,7 +134,7 @@
                     parseData().buildJSON();
                     //если наша страница последняя страница
                     if(currentPage === totalPages){
-                        callback(parseData().buildJSON());
+                        callback(jsonArray);
                     }
                     loadAllGoods();
                 }
