@@ -66,4 +66,14 @@ $(document).ready(function(){
     };
 
     hideMiscellaneous();
+
+    var showCommentsCount = function(){
+        var comments = $('body').find('.comments .all');
+        var posts = $('body').find('.posts_list .title');
+        posts.each(function(index){
+            $(this).append(comments.eq(index).text() + " comments");
+        });
+    };
+
+    showCommentsCount();
 });
