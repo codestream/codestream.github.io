@@ -2,11 +2,15 @@
 
 $(document).ready(function(){
     var removeAd = function(){
-        $("div[class^='banner']").each(function(){
-            if(this.className.match(/[0-9]/)){
-                this.remove();
-            }
-        })
+        if ($.browser.msie){
+            $('.banner_300x500').remove();
+        } else {
+            $("div[class^='banner']").each(function(){
+                if(this.className.match(/[0-9]/)){
+                    this.remove();
+                }
+            })
+        }
     };
 
     removeAd();
