@@ -1,10 +1,10 @@
 'use strict';
 
-$(document).ready(function(){
+$(document).ready(function () {
     //Убрать блок рекламы, если есть (в правой колонке)
-    var removeAd = function(){
-        $("div[class^='banner']").each(function(){
-            if(this.className.match(/[0-9]/)){
+    var removeAd = function () {
+        $("div[class^='banner']").each(function () {
+            if (this.className.match(/[0-9]/)) {
                 $(this).remove();
             }
         })
@@ -13,8 +13,8 @@ $(document).ready(function(){
     removeAd();
 
     //Убрать хабранавигатор (если есть)
-    var removeHabraNavigator = function(){
-        if($(".fast_navigator")){
+    var removeHabraNavigator = function () {
+        if ($(".fast_navigator")) {
             $(".fast_navigator").remove();
         }
     };
@@ -23,7 +23,7 @@ $(document).ready(function(){
 
     //Разделить прямой эфир на 2 отдельных блока (посты, qa) (внутри есть переключалка).
     // Блоки должны сохранить оригинальную стилистику
-    var makeBlocks = function(){
+    var makeBlocks = function () {
         //находим элемент по классу live_broadcast
         var broadCast = $('.live_broadcast');
         //находим текст у детей селектора title
@@ -44,8 +44,8 @@ $(document).ready(function(){
     makeBlocks();
 
     //Все блоки сделать collapsible
-    var makeCollapsible = function(){
-        $('.sidebar_right div .title').each(function() {
+    var makeCollapsible = function () {
+        $('.sidebar_right div .title').each(function () {
             //скрываем элементы указанные в селекторе
             $(this).next().hide();
         });
@@ -53,9 +53,9 @@ $(document).ready(function(){
 
         $('#htmlblock_placeholder').hide();
 
-        $('.sidebar_right div .title').click(function(event){
-            $(this).next().slideToggle(1500,"swing");
-            if($(this).has($('a'))){
+        $('.sidebar_right div .title').click(function (event) {
+            $(this).next().slideToggle(1500, "swing");
+            if ($(this).has($('a'))) {
                 event.preventDefault();
             }
         });
@@ -64,7 +64,7 @@ $(document).ready(function(){
     makeCollapsible();
 
     //Убрать рейтинги, описание, флаги. Должны остаться только ссылки на пост и теги
-    var hideMiscellaneous = function(){
+    var hideMiscellaneous = function () {
         $('.infopanel_wrapper').hide();
         $('.flag').hide();
         $('.content.html_format').hide();
@@ -74,26 +74,31 @@ $(document).ready(function(){
     hideMiscellaneous();
 
     //Справа от каждой ссылки поста показать количество комментариев к посту
-    var showCommentsCount = function(){
-        $('.posts.shortcuts_items > div').each(function() {
-            var comment = $(this).find('.comments .all');
-            $(this).find('.title').append(comment);
-        });
+    var showCommentsCount = function () {
+        var shortcuts =  $('.posts.shortcuts_items > div');
+        if(shortcuts){
+            shortcuts.each(function(){
+                var comments = $(this).find('.comments .all');
+                $(this).find('.title').append(comments);
+            })
+        } else {
+            return;
+        }
     };
 
     showCommentsCount();
 
     //Подтянуть на страницу все посты в том-же формате с последующих страниц
-    var loadData = (function(){
+    var loadData = (function () {
         var pages = parseInt($('#nav-pages > li').children().last().text());
         var lastUrl = $('#nav-pages > li').children('li:last-child a').get(0).href;
         var currentPage = 2;
 
         return {
-            handleResponse: function(){
+            handleResponse: function () {
                 var currentUrl = lastUrl.replace(/\d+/g, currentPage);
                 currentPage++;
-                $.get(currentUrl, function(response){
+                $.get(currentUrl, function (response) {
                     var element = document.createElement('div');
                     element.innerHTML = response.match(/<body>[\s\S]*<\/body>/gim)[0];
                     $(element).find('.infopanel_wrapper').hide();
@@ -105,7 +110,7 @@ $(document).ready(function(){
 
                     showCommentsCount();
 
-                    if(currentPage <= pages){
+                    if (currentPage <= pages) {
                         loadData.handleResponse();
                     } else {
                         $('.page-nav').remove();
