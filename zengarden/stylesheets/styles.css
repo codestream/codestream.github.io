@@ -30,3 +30,71 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+#css-zen-garden {
+    background: #f2f2f2;
+    color: #777;
+    font: 8px;
+    font-family: "Arial sans-serif";
+    text-align: center;
+}
+
+.page-wrapper {
+    padding: 0 2px;
+    width: 500px !important;
+    margin: 0 auto;
+    background-image: url(../images/container.gif);
+    background: repeat-y;
+    background-color: #fff;
+    text-align: left;
+    position: relative;
+}
+
+header h1 {
+    background-image: url(../images/h1.gif);
+    background-color: #fff;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-origin: initial;
+    background-clip: initial;
+    width: 500px;
+    height: 80px;
+    font-weight: normal;
+    font-size: 1.0em;
+    line-height: 1.0em;
+    text-indent: -2000em;
+    display: block;
+    background-position-x: 0px;
+    background-position-y: 100%;
+}
+
+header h2 {
+    width: 500px;
+    height: 206px;
+    background-color: #B6C77B;
+    background-image: url(../images/h2.png);
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    font-weight: normal;
+    font-size: 1.0em;
+    line-height: 1.0em;
+    text-indent: -2000em;
+    margin-top: -1.2em;
+}
+
+.summary {
+    padding: 14px 20px;
+    background-image: url(../images/line.gif);
+}
+
+.preamble h3 {
+    background-image: url(../images/h3_01.gif);
+    width: 231px;
+    height: 27px;
+    background-repeat: no-repeat;
+    font-weight: normal;
+    font-size: 1.0em;
+    line-height: 1.0em;
+    text-indent: -2000em;
+    display: block;
+}
