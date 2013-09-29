@@ -75,10 +75,9 @@ $(document).ready(function(){
 
     //Справа от каждой ссылки поста показать количество комментариев к посту
     var showCommentsCount = function(){
-        var comments = $('body').find('.comments .all');
-        var posts = $('body').find('.posts_list .title');
-        posts.each(function(index){
-            $(this).append(comments.eq(index).text() + " comments");
+        $('.posts.shortcuts_items > div').each(function() {
+            var comment = $(this).find('.comments .all');
+            $(this).find('.title').append(comment);
         });
     };
 
@@ -103,6 +102,8 @@ $(document).ready(function(){
                     $(element).find('.published').hide();
 
                     $(element).find('.posts.shortcuts_items > div').appendTo($('.posts.shortcuts_items'));
+
+                    showCommentsCount();
 
                     if(currentPage <= pages){
                         loadData.handleResponse();
