@@ -49,7 +49,7 @@ table {
 header h2 {
     width: 500px;
     height: 206px;
-    background: #b6c77b url(../images/h2.png) no-repeat 0 100%;
+    background: #b6c77b url(../images/h2.jpg) no-repeat 0 100%;
     background-attachment: scroll;
     margin: 0 auto;
 }
@@ -93,6 +93,7 @@ abbr {
     left: 372px;
     font-size: 10px;
     line-height: 1.2em;
+    z-index: 0;
 }
 
 h1, h2, h3 {
