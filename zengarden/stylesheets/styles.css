@@ -50,6 +50,7 @@ header h2 {
     width: 500px;
     height: 206px;
     background: #b6c77b url(../images/h2.png) no-repeat;
+    background-attachment: scroll;
     margin: 0 auto;
 }
 
@@ -111,7 +112,7 @@ h1 {
 h2 {
     width: 500px;
     height: 206px;
-    background: #b6c77b url(../images/h2.jpg) no-repeat;
+    background: #b6c77b url(../images/h2.jpg) no-repeat 0px 100px;;
 }
 
 .preamble h3, .supporting h3 {
