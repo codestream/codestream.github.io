@@ -118,7 +118,7 @@ h2 {
 .preamble h3, .supporting h3 {
     width: 231px;
     height: 27px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat 0 100%;
 }
 
 .preamble h3 {
@@ -144,7 +144,7 @@ h2 {
 .sidebar h3 {
     width: 130px;
     height: 34px;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat 0 100%;
     background-color: #f2f4d8;
 }
 
@@ -180,22 +180,22 @@ li {
 
 .design-selection li {
     padding: 5px 7px 5px 24px;
-    background: url(../images/bullet1.gif) no-repeat;
+    background: url(../images/bullet1.gif) no-repeat 0 100%;
 }
 
 .design-selection li:hover {
-    background: #e6e9cd url(../images/hover.gif) no-repeat;
+    background: #e6e9cd url(../images/hover.gif) no-repeat 0 100%;
 }
 
 .design-archives li, .zen-resources li {
-    background: url(../images/bullet2.gif) no-repeat;
+    background: url(../images/bullet2.gif) no-repeat 0 100%;
     padding: 5px 0;
 }
 
 div > .design-archives li, div > .zen-resources li {
     padding: 0;
     height: 23px;
-    background: url(../images/bullet2.gif) no-repeat;
+    background: url(../images/bullet2.gif) no-repeat 0 100%;
 }
 
 a {
@@ -231,14 +231,17 @@ div >.design-archives a, div>.zen-resources a {
     display: block;
 }
 
-footer a:hover, footer a:active, .sidebar a:hover, .sidebar a:active, .design-selection a.designer-name:hover, .design-selection a.designer-name:active {
+footer a:hover, footer a:active, .sidebar a:hover, .sidebar a:active, .design-selection a.designer-name:hover,
+.design-selection a.designer-name:active {
     color: #222;
 }
 
-.intro a:hover, .intro a:active, .supporting a:hover, .supporting a:active, .design-selection a:hover, .design-selection a:active {
+.intro a:hover, .intro a:active, .supporting a:hover, .supporting a:active, .design-selection a:hover,
+.design-selection a:active {
     color: #85925C;
 }
 
-div > .design-archives a:hover, div >.design-archives a:active, div >.zen-resources a:hover, div >.zen-resources a:active {
+div > .design-archives a:hover, div >.design-archives a:active, div >.zen-resources a:hover,
+div >.zen-resources a:active {
     background: #e6e9cd url(../images/hover.gif) no-repeat -130px 0;
 }
