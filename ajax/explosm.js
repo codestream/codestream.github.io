@@ -1,7 +1,25 @@
 'use strict';
 
-(function(){
+//реализация очереди на js
+var imageQueue = (function(){
     var queue = [];
+
+    return {
+        //добавляем элемент в очередь
+        // элемент это полученная при помощи
+        // AJAX картинка комикс
+        add: function(element){
+            return queue.push(element);
+        },
+
+        //берем элемент с головы очереди
+        element: function(){
+            return queue.shift();
+        }
+    }
+}());
+
+(function(){
 
     var bind = function(obj, event_name, handler) {
         var handler_wrapper = function(event) {
@@ -62,16 +80,44 @@
 
     var currentUrl = document.querySelector('[rel="prev"]').href;
 
-    var ajaxRequest = getAjaxRequest();
-    ajaxRequest.open('GET', currentUrl, true);
-    ajaxRequest.onreadystatechange = function(){
-        if(ajaxRequest.readyState === 4){
-            if(ajaxRequest.status === 200){
-                var element = document.createElement("body");
-                element.innerHTML = ajaxRequest.responseText.match(/<body>[\s\S]*<\/body>/gim)[0];
+    var sendAjaxRequest = function(){
+        var ajaxRequest = getAjaxRequest();
+        ajaxRequest.open('GET', currentUrl, true);
+        ajaxRequest.onreadystatechange = function(){
+            if(ajaxRequest.readyState === 4){
+                if(ajaxRequest.status === 200){
+                    var element = document.createElement("body");
+                    element.innerHTML = ajaxRequest.responseText.match(/<body>[\s\S]*<\/body>/gim)[0];
+                    //если комикс на странице есть
+                    if(element.querySelector('[alt="Cyanide and Happiness, a daily webcomic"]')){
+                        //так как у комиксов нету id, я решил выбирать по alt
+                        var img = element.querySelector('[alt="Cyanide and Happiness, a daily webcomic"]');
+                        //добавляю картинку в очередь
+                        imageQueue.add(img);
+                        //урл для загрузки следующей картинки
+                        currentUrl = element.querySelector('[rel="prev"]').href;
+                        sendAjaxRequest();
+                    } else {
+                        return;
+                    }
+                }
             }
-        }
+        };
+
+        ajaxRequest.send(null);
     };
 
-    ajaxRequest.send(null);
+    sendAjaxRequest();
+
+    var getImage = function(){
+
+    };
+
+    var scrollListener = function(){
+
+    };
+
+    var makeInfiniteImages = function(){
+
+    }
 }());
