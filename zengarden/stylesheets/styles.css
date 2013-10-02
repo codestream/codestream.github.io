@@ -49,9 +49,9 @@ table {
     margin-left: -277px;
     width: 595px;
     background-color: transparent;
-    background-image: url("../img/zen-bg.gif");
+    background-image: url(../img/zen-bg.gif);
     background-repeat: no-repeat;
-    background-position: 0 40px;
+    background-position: 0 33%;
 }
 
 header h1 {
