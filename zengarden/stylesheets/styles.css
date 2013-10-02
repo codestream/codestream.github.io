@@ -125,7 +125,7 @@ h3 {
 }
 
 .sidebar .wrapper {
-    margin-top:55px;
+    margin-top: -30%;
 }
 
 .preamble h3 {
@@ -172,11 +172,11 @@ h3 {
     top: 920px;
     left: 390px;
     height:500px;
-    font: 8pt/11pt "FontAwesome", sans-serif;
+    font: 7pt/11pt "FontAwesome", sans-serif;
 }
 
 .design-selection a:link.c, .design-selection a.designer-name:visited {
-    display: inline;
+    display: block;
 }
 .design-selection a {
     display: block;
