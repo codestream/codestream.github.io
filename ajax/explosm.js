@@ -15,6 +15,11 @@ var imageQueue = (function(){
         //берем элемент с головы очереди
         element: function(){
             return queue.shift();
+        },
+
+        //длина очереди
+        queueSize: function(){
+            return queue.length;
         }
     }
 }());
