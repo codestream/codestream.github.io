@@ -1,3 +1,4 @@
+/** RESET CSS **/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
 big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
 dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
@@ -53,7 +54,7 @@ table {
     background-position: 0 40px;
 }
 
-header > h1 {
+header h1 {
     background-color: transparent;
     background-image: url(../img/h1.gif);
     background-repeat: no-repeat;
@@ -67,7 +68,7 @@ header > h1 {
     overflow: hidden;
 }
 
-header > h2 {
+header h2 {
     position: absolute;
     background-color: transparent;
     background-image: url(../img/h2.gif);
@@ -81,7 +82,7 @@ header > h2 {
     overflow: hidden;
 }
 
-.requirements > h3 {
+.requirements h3 {
     position:absolute;
     background-color: transparent;
     background-image: url(../img/titulo5.gif);
@@ -94,7 +95,7 @@ header > h2 {
     overflow: hidden;
 }
 
-h3	{
+h3 {
     margin: 0 0 0 30px;
     font-weight: bold;
     font: 13pt "FontAwesome", sans-serif;
@@ -102,7 +103,7 @@ h3	{
     padding: 0;
 }
 
-.benefits > h3 {
+.benefits h3 {
     position:absolute;
     background-color: transparent;
     background-image: url(../img/titulo4.gif);
@@ -115,19 +116,19 @@ h3	{
     overflow: hidden;
 }
 
-.sidebar > ul {
+.sidebar ul {
     list-style-type: none;
     margin-top:5px;
 }
-.sidebar > h3 {
+.sidebar h3 {
     color:#fff;
 }
 
-.sidebar > .wrapper {
+.sidebar .wrapper {
     margin-top:55px;
 }
 
-.preamble > h3 {
+.preamble h3 {
     position:absolute;
     width: 395px;
     height: 41px;
@@ -140,7 +141,7 @@ h3	{
     margin: 0 0 0 -35px;
 }
 
-.explanatio > h3 {
+.explanation h3 {
     position:absolute;
     background-color: transparent;
     background-image: url(../img/titulo2.gif);
@@ -153,7 +154,7 @@ h3	{
     overflow: hidden;
 }
 
-.participation > h3 {
+.participation h3 {
     position:absolute;
     background-color: transparent;
     background-image: url(../img/titulo3.gif);
