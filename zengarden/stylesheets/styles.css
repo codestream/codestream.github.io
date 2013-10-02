@@ -18,7 +18,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 body {
     line-height: 1;
-    font: 8pt/12pt georgia, sans-serif;
+    font: 8pt/12pt "FontAwesome", sans-serif;
     color: #c0c0c0;
     margin: 0px;
 }
@@ -192,7 +192,7 @@ h3 {
 }
 
 .summary {
-    font: 10pt/15pt "Trebuchet MS", sans-serif;
+    font: 10pt/15pt "FontAwesome", sans-serif;
     margin: 400px 0 0 135px;
     padding-bottom: 8px;
     color: #fff;
@@ -201,7 +201,7 @@ h3 {
     border-bottom: 1px solid #353535;
 }
 .summary :first-letter {
-    font: 1.5em/15pt "Georgia", sans-serif;
+    font: 1.5em/15pt "FontAwesome", sans-serif;
 }
 
 .preamble {
@@ -288,7 +288,7 @@ p:nth-child(2)	{
 p:nth-child(6)	{
     text-align: center;
     color: #FFE1A4;
-    font: 8pt/12pt Arial, sans-serif;
+    font: 8pt/12pt "FontAwesome", sans-serif;
     margin: 47px 0 0 0;
     width: 215px;
 }
