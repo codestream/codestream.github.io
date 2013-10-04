@@ -135,7 +135,7 @@ var imageQueue = (function () {
                             url = element.querySelector('[rel="prev"]').href;
                             sendAjaxRequest();
                         } else {
-                            throw new Error("Comics not fount");
+                            throw new Error("Comics not found");
                         }
                     }
                 }
