@@ -110,11 +110,11 @@ var imageQueue = (function () {
         return request;
     }
 
-    var currentUrl = document.querySelector('[rel="prev"]').href;
+    var url = document.querySelector('[rel="prev"]').href;
 
     function sendAjaxRequest(){
         var ajaxRequest = getAjaxRequest();
-        ajaxRequest.open('GET', currentUrl, true);
+        ajaxRequest.open('GET', url, true);
         //если размер очереди с картинками меньше пяти отправляем
         // аякс запрос. При 200 ОК проверяю наличие комикса в ответе,
         // если комикс есть, то ложу его в очередь, получаю урл
@@ -132,7 +132,7 @@ var imageQueue = (function () {
                             //добавляю картинку в очередь
                             imageQueue.add(img);
                             //урл для загрузки следующей картинки
-                            currentUrl = element.querySelector('[rel="prev"]').href;
+                            url = element.querySelector('[rel="prev"]').href;
                             sendAjaxRequest();
                         } else {
                             throw new Error("Comics not fount");
