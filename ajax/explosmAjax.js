@@ -178,10 +178,12 @@ var imageQueue = (function () {
 
         var appendImage = function(img){
             var firstImage = document.querySelector('[alt="Cyanide and Happiness, a daily webcomic"]');
-            //нужна картинка которая имеет атрибут align=center
-            comicsContainer = closest(firstImage, function(node) {
-                return node.hasAttribute('align','center');
-            });
+            if(firstImage){
+                //нужна картинка которая имеет атрибут align=center
+                comicsContainer = closest(firstImage, function(node) {
+                    return node.hasAttribute('align','center');
+                });
+            }
 
             comicsContainer.appendChild(img);
         };
