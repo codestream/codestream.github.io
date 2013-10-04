@@ -1,3 +1,11 @@
+/**
+ * Минусы реализации
+ *
+ * Если медленный инет, то при достижении конца очереди, видим блок рекламы и примерно через секунд
+ * 5-6 подружаются комиксы. Выход из данной проблемы на мой взгляд это убирать блок с рекламой
+ * сразу при запуске скрипта
+ *
+ */
 'use strict';
 
 window.onerror = function(error){
@@ -127,7 +135,7 @@ var imageQueue = (function () {
                             currentUrl = element.querySelector('[rel="prev"]').href;
                             sendAjaxRequest();
                         } else {
-                            return;
+                            throw new Error("Comics not fount");
                         }
                     }
                 }
