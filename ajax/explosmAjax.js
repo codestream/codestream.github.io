@@ -4,7 +4,13 @@ window.onerror = function(error){
     console.log(error);
 };
 
-//image queue
+/**
+ * Базовая реализации очереди на js
+ * Методы очереди:
+ * 1)add - добавляем в очередь элемент
+ * 2)element - берем элемент с головы очереди
+ * 3)queueSize - возвращает размер очереди
+ */
 var imageQueue = (function () {
     var queue = [];
     return {
@@ -163,8 +169,9 @@ var imageQueue = (function () {
         scrollHandler = bind(window, 'scroll', scrollListener);
 
         var appendImage = function(img){
-            var firstImg = document.querySelector('[alt="Cyanide and Happiness, a daily webcomic"]');
-            comicsContainer = closest(firstImg, function(node) {
+            var firstImage = document.querySelector('[alt="Cyanide and Happiness, a daily webcomic"]');
+            //нужна картинка которая имеет атрибут align=center
+            comicsContainer = closest(firstImage, function(node) {
                 return node.hasAttribute('align','center');
             });
 
