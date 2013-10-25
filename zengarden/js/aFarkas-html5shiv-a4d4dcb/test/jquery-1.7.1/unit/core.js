@@ -370,7 +370,7 @@ test("isFunction", function() {
 	var myfunction = { "function": "test" };
 	ok( !jQuery.isFunction(myfunction), "Function Object" );
 
-	// Make sure normal functions still work
+	// Make sure normal functions still doWork
 	var fn = function(){};
 	ok( jQuery.isFunction(fn), "Normal Function" );
 

@@ -18,7 +18,7 @@
   /** Detect whether the browser supports default html5 styles */
   var supportsHtml5Styles;
 
-  /** Name of the expando, to work with multiple documents or to re-shiv one document */
+  /** Name of the expando, to doWork with multiple documents or to re-shiv one document */
   var expando = '_html5shiv';
 
   /** The id for the the documents expando */
@@ -183,8 +183,8 @@
       return createElement(nodeName, ownerDocument, data);
     };
 
-    ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-      'var n=f.cloneNode(),c=n.createElement;' +
+    ownerDocument.createDocumentFragment = Function('h,func', 'return function(){' +
+      'var n=func.cloneNode(),c=n.createElement;' +
       'h.shivMethods&&(' +
         // unroll the `createElement` calls
         getElements().join().replace(/[\w\-]+/g, function(nodeName) {

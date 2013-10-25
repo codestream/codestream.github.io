@@ -1,1 +1,1 @@
-This is repo with pretty WebUI examples. Currently, I'm not using any libraries
+This is repo with pretty WebUI examples. Currently, I'm not using plain JS and jQuery

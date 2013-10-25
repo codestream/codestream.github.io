@@ -290,7 +290,7 @@ test("closest()", function() {
 	equal( jQuery("#qunit-fixture p").closest("#qunit-fixture").length, 1, "Closest should return a unique set" );
 
 	// Test on disconnected node
-	equal( jQuery("<div><p></p></div>").find("p").closest("table").length, 0, "Make sure disconnected closest work." );
+	equal( jQuery("<div><p></p></div>").find("p").closest("table").length, 0, "Make sure disconnected closest doWork." );
 
 	// Bug #7369
 	equal( jQuery("<div foo='bar'></div>").closest("[foo]").length, 1, "Disconnected nodes with attribute selector" );

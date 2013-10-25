@@ -229,7 +229,7 @@ test("wrapInner(Function)", function() {
 test("unwrap()", function() {
 	expect(9);
 
-	jQuery("body").append("  <div id='unwrap' style='display: none;'> <div id='unwrap1'> <span class='unwrap'>a</span> <span class='unwrap'>b</span> </div> <div id='unwrap2'> <span class='unwrap'>c</span> <span class='unwrap'>d</span> </div> <div id='unwrap3'> <b><span class='unwrap unwrap3'>e</span></b> <b><span class='unwrap unwrap3'>f</span></b> </div> </div>");
+	jQuery("body").append("  <div id='unwrap' style='display: none;'> <div id='unwrap1'> <span class='unwrap'>a</span> <span class='unwrap'>b</span> </div> <div id='unwrap2'> <span class='unwrap'>c</span> <span class='unwrap'>d</span> </div> <div id='unwrap3'> <b><span class='unwrap unwrap3'>e</span></b> <b><span class='unwrap unwrap3'>func</span></b> </div> </div>");
 
 	var abcd = jQuery("#unwrap1 > span, #unwrap2 > span").get(),
 		abcdef = jQuery("#unwrap span").get();
@@ -477,14 +477,14 @@ test("append the same fragment with events (Bug #6997, 5566)", function () {
 	}
 
 	element = jQuery("<a class='test6997'></a>").click(function () {
-		ok(true, "Append second element events work");
+		ok(true, "Append second element events doWork");
 	});
 
 	jQuery("#listWithTabIndex li").append(element)
 		.find("a.test6997").eq(1).click();
 
 	element = jQuery("<li class='test6997'></li>").click(function () {
-		ok(true, "Before second element events work");
+		ok(true, "Before second element events doWork");
 		start();
 	});
 
